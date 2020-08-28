@@ -28,11 +28,11 @@ public class ListaVetorParte2 {
         for (int i = 0; i < vetorCandi.length; i++) {
             totalV += vetorCandi[i];
         }
-        System.out.println("O percentual de votos Brancos foi: " + (vetorCandi[0] * 100) / totalV + "%");
-        System.out.println("O percentual de votos nulos foi: " + (vetorCandi[9] * 100) / totalV + "%");
+        System.out.println("O percentual de votos Brancos foi: " + (vetorCandi[0] * 100.0) / totalV + "%");
+        System.out.println("O percentual de votos nulos foi: " + (vetorCandi[9] * 100.0) / totalV + "%");
         for (int i = 1; i < 9; i++) {
             System.out.println("O Percentual do candidato " + i + " foi "
-                    + "" + (vetorCandi[i] * 100) / totalV + "%");
+                    + "" + (vetorCandi[i] * 100.0) / totalV + "%");
         }
     }
     public static void exibiCandi() {
