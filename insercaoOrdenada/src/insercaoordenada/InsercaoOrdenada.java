@@ -21,10 +21,10 @@ public class InsercaoOrdenada {
                         cont = insercaoOrdenada(A, quantA, valor);
                         switch (cont) {
                             case -1:
-                                System.out.println("O valor inserido já existe no vetor!");
+                                System.err.println("O valor inserido já existe no vetor!");
                                 break;
                             case -2:
-                                System.out.println("O vetor de números par está cheio!");
+                                System.err.println("O vetor de números par está cheio!");
                                 break;
                             default:
                                 quantA = cont;
@@ -35,10 +35,10 @@ public class InsercaoOrdenada {
                         cont = insercaoOrdenada(B, quantB, valor);
                         switch (cont) {
                             case -1:
-                                System.out.println("O valor inserido já existe no vetor!");
+                                System.err.println("O valor inserido já existe no vetor!");
                                 break;
                             case -2:
-                                System.out.println("O vetor de números par está cheio!");
+                                System.err.println("O vetor de números par está cheio!");
                                 break;
                             default:
                                 quantB = cont;
@@ -56,7 +56,7 @@ public class InsercaoOrdenada {
                         busca = buscarValor(B, quantB, valor);
                     }
                     if (busca == -1) {
-                        System.out.println("O valor não foi encontrado!");
+                        System.err.println("O valor não foi encontrado!");
                     } else {
                         System.out.println("O valor foi encontrado no indice [" + busca + "]");
                     }
@@ -71,16 +71,16 @@ public class InsercaoOrdenada {
                         r = removValor(B, quantB, valor);
                     }
                     if (r == -1) {
-                        System.out.println("O valor não foi encontrado!");
+                        System.err.println("O valor não foi encontrado!");
                     } else if (r == -2) {
-                        System.out.println("O vetor está vazio!");
+                        System.err.println("O vetor está vazio!");
                     } else {
                         System.out.println("Valor removido!");
                     }
                     break;
                 case 4:
                     if (quantA == 0) {
-                        System.out.println("Vetor vazio!");
+                        System.err.println("Vetor vazio!");
                     } else {
                         System.out.println("Números no vetor de pares: ");
                         exibirVet(A, quantA);
@@ -88,7 +88,7 @@ public class InsercaoOrdenada {
                     break;
                 case 5:
                     if (quantB == 0) {
-                        System.out.println("Vetor vazio!");
+                        System.err.println("Vetor vazio!");
                     } else {
                         System.out.println("Números no vetor de ímpares: ");
                         exibirVet(B, quantB);
@@ -98,7 +98,7 @@ public class InsercaoOrdenada {
                     System.out.println("Fim do programa!");
                     break;
                 default:
-                    System.out.println("Opção inválida! informe a opção novamente.");
+                    System.err.println("Opção inválida! informe a opção novamente.");
             }
         } while (opc != 0);
     }
@@ -186,7 +186,6 @@ public class InsercaoOrdenada {
             return p;
         } else if (p == 0) {
             return -2;
-
         } else {
             return -1;
         }
