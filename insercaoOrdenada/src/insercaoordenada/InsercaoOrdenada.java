@@ -154,8 +154,7 @@ public class InsercaoOrdenada {
 
     public static int buscarValor(int[] vet, int q, int v) {
         int meio, inicio = 0, fim = q;
-        int j = -1;
-        while (inicio <= fim) {
+        do {
             meio = (inicio + fim) / 2;
             if (vet[meio] == v) {
                 return meio;
@@ -164,8 +163,8 @@ public class InsercaoOrdenada {
             } else {
                 fim = meio - 1;
             }
-        }
-        return j;
+        } while (inicio <= fim);
+        return -1;
     }
 
     public static void exibirVet(int[] vet, int p) {
