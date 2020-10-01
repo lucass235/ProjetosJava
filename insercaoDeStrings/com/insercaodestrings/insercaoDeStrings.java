@@ -7,8 +7,8 @@ public class insercaoDeStrings {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String[] nome = new String[20];
-    int resp, busc;
-    String valor;
+        int resp, busc;
+        String valor;
         System.out.println("Informe a seguir 20 nomes não repetidos!");
         preencherVet(nome);
         ordenarVet(nome);
@@ -22,10 +22,10 @@ public class insercaoDeStrings {
                     System.out.println("Informe o nome para busca:");
                     valor = in.nextLine();
                     busc = buscaValor(nome, valor);
-                    if (busc ==-1) {
+                    if (busc == -1) {
                         System.err.println("Nome não encontrado!");
                     } else {
-                        System.out.println("O(a) " +valor+ " foi encontrado no vetor " +busc);
+                        System.out.printf("O(a) " + valor + " foi encontrado no vetor " + busc);
                     }
                     break;
                 case 2:
@@ -37,23 +37,24 @@ public class insercaoDeStrings {
                 default:
                     System.err.println("Opção inválida");
             }
-        }while(resp != 0);
+        } while (resp != 0);
 
     }
-    public static void exibirNomes (String[] nomes) {
+
+    public static void exibirNomes(String[] nomes) {
         for (int i = 0; i < nomes.length; i++) {
             System.out.println(nomes[i]);
 
         }
     }
 
-    public static void preencherVet (String[] nomes) {
+    public static void preencherVet(String[] nomes) {
         Scanner in = new Scanner(System.in);
         String nome;
         int i, j;
         boolean repetido;
-        for ( i = 0; i < nomes.length;) {
-            System.out.print("Informe o " +(i+1)+ "º nome:");
+        for (i = 0; i < nomes.length; ) {
+            System.out.print("Informe o " + (i + 1) + "º nome:");
             nome = in.nextLine();
             repetido = false;
             for (j = 0; j < i; j++) {
@@ -62,7 +63,7 @@ public class insercaoDeStrings {
                     break;
                 }
             }
-            if (repetido==false) {
+            if (repetido == false) {
                 nomes[i] = nome;
                 i++;
             } else {
@@ -88,12 +89,12 @@ public class insercaoDeStrings {
 
     public static void ordenarVet(String[] vet) {
         String aux;
-        for (int i =0; i < vet.length-1; i++) {
-            for (int j = 0; j < vet.length-1; j++) {
-                if (vet[j].compareToIgnoreCase(vet[j+1])>0) {
+        for (int i = 0; i < vet.length - 1; i++) {
+            for (int j = 0; j < vet.length - 1; j++) {
+                if (vet[j].compareToIgnoreCase(vet[j + 1]) > 0) {
                     aux = vet[j];
-                    vet[j] = vet[j+1];
-                    vet[j+1] = aux;
+                    vet[j] = vet[j + 1];
+                    vet[j + 1] = aux;
                 }
             }
         }
