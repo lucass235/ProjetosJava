@@ -13,9 +13,9 @@ public class MatrizTrasposta {
         System.out.print("Informe a quantidades de colunas da matriz: ");
         j = in.nextInt();
         int[][] A = new int[i][j];
-        int[][] B = new int[j][i];
+        int[][] B ;
         preencherMatriz(A);
-        matrizTra(A, B);
+        B = matrizTra(A);
         do {
         System.out.println("1-Exibir a matriz \n2-Exibir a matriz Trasposta"
                 + " \n0-Encerrar");
@@ -33,7 +33,7 @@ public class MatrizTrasposta {
                 System.out.println();
                 break;
             case 0:
-                System.out.printf("%S","Até mais!!");
+                System.out.printf("%S %n","Até mais!!");
                 break;
             default:
                 System.err.println("Valor Inválido!");
@@ -51,12 +51,16 @@ public class MatrizTrasposta {
         }
     }
     
-    public static void matrizTra (int[][] matriz, int[][] matrizT) {
-        for (int i = 0; i < matrizT.length; i++) {
-            for (int j = 0; j < matrizT[0].length; j++) {
-                matrizT[i][j] = matriz[j][i];
+    public static int[][] matrizTra (int[][] matriz) {
+        int li = matriz[0].length;
+        int co = matriz.length;
+        int[][] B = new int[li][co];
+        for (int i = 0; i < B.length; i++) {
+            for (int j = 0; j < B[0].length; j++) {
+                B[i][j] = matriz[j][i];
             }
         }
+        return B;
     }
 
     public static void exibirMat(int[][] mat){
