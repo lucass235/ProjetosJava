@@ -328,7 +328,6 @@ public class JogoDaVelha {
                 return jogada;
             }
             qtd = 0;
-
         }
         for (int i = 0; i < mat.length; i++) { //jogada na diagonal
             if (mat[i][i] == "0") {
@@ -371,14 +370,6 @@ public class JogoDaVelha {
             jogada = true;
             return jogada;
         }
-        
-        
-        
-        
-        
-        
-        
-        
         for (int i = 0; i < mat.length; i++) { // jogada em linhas
             for (int j = 0; j < mat[0].length; j++) {
                 if (mat[i][j] == "x") {
@@ -446,14 +437,12 @@ public class JogoDaVelha {
         } else if (mat[2][0] != "o") {
             liLivre = 2;
             coLivre = 0;
-
         }
         if (qtd == 2 && mat[liLivre][coLivre] != "o") {
             mat[liLivre][coLivre] = "o";
             jogada = true;
             return jogada;
         }
-
         return jogada;
     }
 }
