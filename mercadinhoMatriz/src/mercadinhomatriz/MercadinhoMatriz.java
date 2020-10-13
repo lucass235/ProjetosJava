@@ -25,6 +25,7 @@ public class MercadinhoMatriz {
         System.out.println("====================================================");
                 
     }
+    
     public static void preencher(int[][] mat){
         Scanner in = new Scanner(System.in);
         for (int j = 0; j < mat[0].length-1; j++) {
