@@ -94,6 +94,70 @@ public class JogoDaVelha {
                                     } while (resultado != 1);
                                     break;
                                 case 2:
+                                    valorA = gera.nextInt(2);
+                                    System.out.println(nomes[0] + "-X \n" + nomes[1] + "-O");
+                                    if (valorA == 0) {
+                                        vez = 0;
+                                        System.out.println("O(a) " + nomes[0] + " inicia o jogo ");
+                                    } else {
+                                        vez = 1;
+                                        System.out.println("O(a) " + nomes[1] + " inicia o jogo ");
+                                    }
+                                    do {
+                                        if (qtd == jogo.length * jogo[0].length) {
+                                            System.out.println("Impate!");
+                                            resultado = 1;
+                                        } else if (vez == 0) {
+                                            exibirTabela(jogo);
+                                            System.out.println(nomes[0] + " é sua vez de jogar: ");
+                                            System.out.print("Informe a linha: ");
+                                            li = in.nextInt();
+                                            li -= 1;
+                                            System.out.print("Informe a coluna: ");
+                                            co = in.nextInt();
+                                            co -= 1;
+                                            while (jogo[li][co] == "x" || jogo[li][co] == "o") {
+                                                System.out.println("Essa posição já esta ocupada, informe outra: ");
+                                                System.out.print("Informe a linha: ");
+                                                li = in.nextInt();
+                                                li -= 1;
+                                                System.out.print("Informe a coluna: ");
+                                                co = in.nextInt();
+                                                co -= 1;
+                                            }
+                                            jogo[li][co] = "x";
+                                            qtd++;
+                                            resultado = vencedor(jogo, "x");
+                                            if (resultado == 1) {
+                                                exibirTabela(jogo);
+                                                System.err.println("Você Venceu!");
+                                            } else {
+                                                vez = 1;
+                                            }
+                                        } else {
+                                            boolean veri = verificarPossibilidade(jogo);
+                                            if (veri == true) {
+                                                resultado = vencedor(jogo, "o");
+                                                qtd++;
+                                            } else {
+                                                li = gera.nextInt(3);
+                                                co = gera.nextInt(3);
+                                                while (jogo[li][co] == "x" || jogo[li][co] == "o") {
+                                                    li = gera.nextInt(3);
+                                                    co = gera.nextInt(3);
+                                                }
+                                                jogo[li][co] = "o";
+                                                qtd++;
+                                                resultado = vencedor(jogo, "o");
+                                            }
+                                            if (resultado == 1) {
+                                                exibirTabela(jogo);
+                                                System.err.println("A " + nomes[1] + " Venceu!");
+                                            } else {
+                                                vez = 0;
+                                            }
+                                        }
+                                    } while (resultado != 1);
                                     break;
                             }
                             break;
@@ -114,6 +178,7 @@ public class JogoDaVelha {
                             }
                             do {
                                 if (qtd == jogo.length * jogo[0].length) {
+                                    System.out.println();
                                     System.err.println("Impate!");
                                     resultado = 1;
                                 } else {
@@ -227,5 +292,168 @@ public class JogoDaVelha {
             return 1;
         }
         return 2;
+    }
+
+    public static boolean verificarPossibilidade(String[][] mat) {
+        int qtd = 0, liLivre = 0, coLivre = 0;
+        boolean jogada = false;
+        for (int i = 0; i < mat.length; i++) { // jogada em linhas
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] == "o") {
+                    qtd++;
+                } else if (mat[i][j] != "x") {
+                    liLivre = i;
+                    coLivre = j;
+                }
+            }
+            if (qtd == 2 && mat[liLivre][coLivre] != "x") {
+                mat[liLivre][coLivre] = "o";
+                jogada = true;
+                return jogada;
+            }
+            qtd = 0;
+        }
+        for (int j = 0; j < mat[0].length; j++) { // jogada nas colunas
+            for (int i = 0; i < mat.length; i++) {
+                if (mat[i][j] == "o") {
+                    qtd++;
+                } else if (mat[i][j] != "x") {
+                    liLivre = i;
+                    coLivre = j;
+                }
+            }
+            if (qtd == 2 && mat[liLivre][coLivre] != "x") {
+                mat[liLivre][coLivre] = "o";
+                jogada = true;
+                return jogada;
+            }
+            qtd = 0;
+
+        }
+        for (int i = 0; i < mat.length; i++) { //jogada na diagonal
+            if (mat[i][i] == "0") {
+                qtd++;
+            } else if (mat[i][i] != "x") {
+                liLivre = i;
+
+            }
+        }
+        if (qtd == 2 && mat[liLivre][coLivre] != "x") {
+            mat[liLivre][coLivre] = "o";
+            jogada = true;
+            return jogada;
+        }
+        qtd = 0;
+        // jogada na diagonal secundaria
+        if (mat[0][2] == "o") {
+            qtd++;
+        } else if (mat[0][2] != "x") {
+            liLivre = 0;
+            coLivre = 2;
+
+        }
+        if (mat[1][1] == "o") {
+            qtd++;
+        } else if (mat[1][1] != "x") {
+            liLivre = 1;
+            coLivre = 1;
+
+        }
+        if (mat[2][0] == "o") {
+            qtd++;
+        } else if (mat[2][0] != "x") {
+            liLivre = 2;
+            coLivre = 0;
+
+        }
+        if (qtd == 2 && mat[liLivre][coLivre] != "x") {
+            mat[liLivre][coLivre] = "o";
+            jogada = true;
+            return jogada;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        for (int i = 0; i < mat.length; i++) { // jogada em linhas
+            for (int j = 0; j < mat[0].length; j++) {
+                if (mat[i][j] == "x") {
+                    qtd++;
+                } else if (mat[i][j] != "o") {
+                    liLivre = i;
+                    coLivre = j;
+                }
+            }
+            if (qtd == 2 && mat[liLivre][coLivre] != "o") {
+                mat[liLivre][coLivre] = "o";
+                jogada = true;
+                return jogada;
+            }
+            qtd = 0;
+        }
+        for (int j = 0; j < mat[0].length; j++) { // jogada nas colunas
+            for (int i = 0; i < mat.length; i++) {
+                if (mat[i][j] == "x") {
+                    qtd++;
+                } else if (mat[i][j] != "o") {
+                    liLivre = i;
+                    coLivre = j;
+                }
+            }
+            if (qtd == 2 && mat[liLivre][coLivre] != "o") {
+                mat[liLivre][coLivre] = "o";
+                jogada = true;
+                return jogada;
+            }
+            qtd = 0;
+
+        }
+        for (int i = 0; i < mat.length; i++) { //jogada na diagonal
+            if (mat[i][i] == "x") {
+                qtd++;
+            } else if (mat[i][i] != "o") {
+                liLivre = i;
+
+            }
+        }
+        if (qtd == 2 && mat[liLivre][coLivre] != "o") {
+            mat[liLivre][coLivre] = "o";
+            jogada = true;
+            return jogada;
+        }
+        qtd = 0;
+        // jogada na diagonal secundaria
+        if (mat[0][2] == "x") {
+            qtd++;
+        } else if (mat[0][2] != "o") {
+            liLivre = 0;
+            coLivre = 2;
+
+        }
+        if (mat[1][1] == "x") {
+            qtd++;
+        } else if (mat[1][1] != "o") {
+            liLivre = 1;
+            coLivre = 1;
+
+        }
+        if (mat[2][0] == "x") {
+            qtd++;
+        } else if (mat[2][0] != "o") {
+            liLivre = 2;
+            coLivre = 0;
+
+        }
+        if (qtd == 2 && mat[liLivre][coLivre] != "o") {
+            mat[liLivre][coLivre] = "o";
+            jogada = true;
+            return jogada;
+        }
+
+        return jogada;
     }
 }
