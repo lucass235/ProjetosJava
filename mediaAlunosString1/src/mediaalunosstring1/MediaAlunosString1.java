@@ -6,19 +6,14 @@ public class MediaAlunosString1 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int qtdAlunos = 0, busca;
+        int qtdAlunos, busca;
         System.out.print("Informe quantos alunos existe no Cólegio Minha Escolinha: ");
         qtdAlunos = in.nextInt();
-        String aluno;
         String[] nomes = new String[qtdAlunos];
         String[] situacao = new String[qtdAlunos];
         double[] medias = new double[qtdAlunos];
         preencher(nomes, medias, situacao);
-        in.nextLine();
-        System.out.print("Informe o nome do aluno a ser consultado: ");
-        aluno = in.nextLine();
-        busca = buscarNome(nomes, aluno);
-        exibirResultado(nomes, medias, situacao, busca);
+        exibirResultado(nomes, medias, situacao);
     }
 
     public static void preencher(String[] nomes, double[] medias, String[] situacao) {
@@ -28,7 +23,6 @@ public class MediaAlunosString1 {
         for (int i = 0; i < nomes.length; i++) {
             System.out.printf("Informe o nome do %dº aluno: ", (1 + i));
             nomes[i] = in.nextLine();
-            
             valido = validacaoNome(nomes[i]);
             while (valido == false) {
                 System.err.println("Nome Inválido!");
@@ -53,7 +47,7 @@ public class MediaAlunosString1 {
                 in.nextLine();
             }
             medias[i] = (nota1 * 2.0 + nota2 * 3.0) / 5.0;
-            if(medias[i] < 3) {
+            if (medias[i] < 3) {
                 situacao[i] = "reprovado";
             } else if (medias[i] >= 3 && medias[i] < 7) {
                 situacao[i] = "em recuperação";
@@ -61,7 +55,7 @@ public class MediaAlunosString1 {
                 situacao[i] = "aprovado";
             }
         }
-        
+
     }
 
     public static boolean validacaoNome(String nome) {
@@ -72,28 +66,47 @@ public class MediaAlunosString1 {
             valor = nome.charAt(i);
             if (Character.isDigit(valor)) {
                 return false;
-            } else if (Character.isLetter(valor) || Character.isDigit(valor)) {
+            } else if (Character.isLetter(valor) || Character.isSpaceChar(valor)) {
             } else {
                 return false;
             }
         }
-        return true;
+        return true; // nome é valido
     }
-    
-    public static int buscarNome (String[] nomes, String aluno) {
-         for (int i = 0; i < nomes.length; i++) {
-             if (aluno.equalsIgnoreCase(nomes[i])) {
-                 return i;
-             }
+
+    public static int buscarNome(String[] nomes, String aluno) {
+        for (int i = 0; i < nomes.length; i++) {
+            if (aluno.equalsIgnoreCase(nomes[i])) {
+                return i;
+            }
         }
         return -1;
     }
-    
-    public static void exibirResultado (String[] nomes, double[] medias, String[] situacao, int i) {
-        if(i == -1){
-            System.out.println("Aluno não encontrado!");
-        } else{
-            System.out.printf("O aluno(a) %s obteve média %.2f e está %s. %n", nomes[i], medias[i], situacao[i]);
-        }
+
+    public static void exibirResultado(String[] nomes, double[] medias, String[] situacao) {
+        Scanner in = new Scanner(System.in);
+        int resp, busca;
+        String aluno;
+        do {
+            System.out.println("1- buscar aluno \n2- encerrar");
+            resp = in.nextInt();
+            switch (resp) {
+                case 1:
+                    in.nextLine();
+                    System.out.print("Informe o nome do aluno a ser consultado: ");
+                    aluno = in.nextLine();
+                            
+                    busca = buscarNome(nomes, aluno);
+                    if (busca == -1) {
+                        System.err.println("Aluno não encontrado!");
+                    } else {
+                        System.out.printf("O aluno(a) %s obteve média %.2f e está %s. %n", nomes[busca], medias[busca], situacao[busca]);
+                    }
+                    break;
+                case 2:
+                    System.out.println("Obrigado! Até mais!!");
+            }
+        } while (resp != 2);
+
     }
 }
