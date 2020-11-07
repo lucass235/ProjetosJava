@@ -47,12 +47,11 @@ public class StringValida {
             valor = frase.charAt(i);
             if (Character.isSpaceChar(valor)) {
                 qtdP++;
-            } else if (valor == '.' || valor == ':' || valor == ';' || 
-                    valor == '?' || valor == '!' || valor == ',' ) {
+            } else if (valor == ':' || valor == ';'
+                    || valor == '?' || valor == '!' || valor == ',') {
                 qtdP++;
             }
         }
-        
         return qtdP;
     }
 }
