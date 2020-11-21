@@ -38,7 +38,6 @@ public class CpfString {
                 }
             }
         }
-
         return veri; // cpf valido!
     }
     
