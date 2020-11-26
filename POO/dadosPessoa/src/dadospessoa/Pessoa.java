@@ -1,6 +1,6 @@
 package dadospessoa;
 
-public class Pessoa implements Comparable <Pessoa> {
+public class Pessoa implements Comparable<Pessoa> {
 
     private String nome;
     private int idade;
@@ -106,8 +106,8 @@ public class Pessoa implements Comparable <Pessoa> {
                 + " \nIdade: " + this.getIdade() + " \nAltura: " + this.getAltura()
                 + " \nPeso: " + this.getPeso();
     }
-    
-    public int compareTo (Pessoa pes) {
+
+    public int compareTo(Pessoa pes) {
         return 0;
     }
 }

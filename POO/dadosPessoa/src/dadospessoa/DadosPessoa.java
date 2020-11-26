@@ -85,6 +85,5 @@ public class DadosPessoa {
                     System.err.println("Resposta inválida!");
             }
         } while (resp != 0);
-
     }
 }
