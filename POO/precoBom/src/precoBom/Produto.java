@@ -1,4 +1,4 @@
-package armazem;
+package precoBom;
 
 public class Produto implements Comparable<Produto> {
 
@@ -97,7 +97,7 @@ public class Produto implements Comparable<Produto> {
             } else {
                 int newEs = this.getqtdEsto() - novoQtd;
                 this.setqtdEsto(newEs);
-                System.out.println("O total a pagar é: " + this.getPreco());
+                System.out.println("O total a pagar é: R$" + (novoQtd * this.getPreco()));
             }
         }
     }
@@ -109,7 +109,7 @@ public class Produto implements Comparable<Produto> {
     public String toString() {
         return "Os dados do produto são: \ncodigo: " + this.getCodigo() + " \nDescrição: "
                 + this.getDescricao() + " \nFornecedor: " + this.getFornecedor()
-                + " \nPreço: " + this.getPreco() + " \nQuantidade do estoque: " + this.getqtdEsto() + "";
+                + " \nPreço: R$" + this.getPreco() + " \nQuantidade do estoque: " + this.getqtdEsto() + "";
     }
 
     public int compareTo(Produto pro) {
