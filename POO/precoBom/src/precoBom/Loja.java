@@ -5,7 +5,7 @@ public class Loja {
     private int qtd;
     private Produto[] produtos;
 
-    public Loja(int tam) {
+    public Loja(int tam) { // contrustor.
         this.produtos = new Produto[tam];
     }
 
@@ -32,12 +32,12 @@ public class Loja {
     }
 
     public void exibirProdutos() {
-        if (qtd == 0) {
+        if (this.qtd == 0) {
             System.err.println("Loja sem produtos");
         } else {
             for (int i = 0; i < this.qtd; i++) {
                 System.out.println("Produto " + (1 + i) + ":");
-                System.out.println(produtos[i]);
+                System.out.println(this.produtos[i]);
                 System.out.println("===========================================");
             }
         }

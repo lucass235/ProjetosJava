@@ -113,7 +113,6 @@ public class Produto implements Comparable<Produto> {
     }
 
     public int compareTo(Produto pro) {
-
         return this.getCodigo().compareTo(pro.getCodigo());
     }
 }
