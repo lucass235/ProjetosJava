@@ -132,8 +132,6 @@ public class Cadastro {
             } else {
                 for (int i = pos; i < this.qtd - 1; i++) {
                     this.f[i] = this.f[i + 1];
-                    System.out.println("qtd: " + this.qtd);
-                    System.out.println("i: " + i);
                 }
                 f[this.qtd-1] = null;
                 this.qtd--;
