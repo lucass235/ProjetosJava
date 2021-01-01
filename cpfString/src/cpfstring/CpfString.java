@@ -7,13 +7,13 @@ public class CpfString {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String cpf;
-        boolean resul ;
+        boolean resul;
         System.out.println("Digite seu CPF: ");
         cpf = in.nextLine();
         resul = validacaoCpf(cpf);
         if (resul == false) {
             System.err.println("CPF inválido!");
-        }  else {
+        } else {
             exibir(cpf);
             System.out.println("CPF válido!");
         }
@@ -40,21 +40,26 @@ public class CpfString {
         }
         return veri; // cpf valido!
     }
-    
-    public static void exibir (String cpf) {
-       int tam;
-       char valor;
-       tam = cpf.length();
+
+    public static void exibir(String cpf) {
+        int tam; // tamanho
+        char valor;
+        tam = cpf.length();
         for (int i = 0; i < tam; i++) { // cpf = 092.6097.040-07
             valor = cpf.charAt(i);
-            if (i== 3 || i == 6 ) {
-                System.out.print(".");
-                System.out.print(valor);
-            } else if (i == 9)  {
-                System.out.print("-");
-                System.out.print(valor);
-            } else{
-                System.out.print(valor);
+            switch (i) {
+                case 3:
+                case 6:
+                    System.out.print(".");
+                    System.out.print(valor);
+                    break;
+                case 9:
+                    System.out.print("-");
+                    System.out.print(valor);
+                    break;
+                default:
+                    System.out.print(valor);
+                    break;
             }
         }
         System.out.println();
